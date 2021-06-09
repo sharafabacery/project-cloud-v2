@@ -19,4 +19,4 @@ deploy:
    bucket_name: "multi-container-cloud-app"
    bucket_path: "docker"
    on:
-     branch: multi-cont-app
+     branch: main
