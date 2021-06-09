@@ -3,7 +3,7 @@ services:
     - docker
     
 after_succes:
-    - docker login -u "$DOCKER_ID" -p "$DOCKER_PASSWORD" --password-stdin docker.io
+    - docker login -u "$DOCKER_ID" -p "$DOCKER_PASSWORD" --password-stdin 
     - docker build -t sharafabacery/cloud-project .
 
     - echo "$DOCKER_PASSWORD | docker login -u $DOCKER_ID" --password-stdin
