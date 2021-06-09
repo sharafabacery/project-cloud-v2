@@ -10,14 +10,18 @@ after_sucess:
     - docker push sharafabacery/cloud-project .
 
 deploy:
-   provider: elasticbeanstalk
-   region: ap-south-1
-   app: cloud-project
-   env: Cloudproject-env
-   access_key_id: $AWS_ACCESS_KEY
-   secret_access_key: $AWS_SECRET_KEY
-   edge: true
-   bucket_name: "myawabucketm"
-   bucket_path: "docker"
-   on:
-     branch: main
+  - provider: elasticbeanstalk
+    region: ap-south-1
+    app: cloud-project
+    env: Cloudproject-env
+    access_key_id: $AWS_ACCESS_KEY
+    secret_access_key: $AWS_SECRET_KEY
+  - provider: s3
+    access_key_id: $AWS_ACCESS_KEY
+    secret_access_key: $AWS_SECRET_KEY
+    region: ap-south-1
+    edge: true
+    bucket_name: "myawabucketm"
+    bucket_path: "docker"
+    on:
+      branch: main
