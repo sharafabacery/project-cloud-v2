@@ -1,0 +1,60 @@
+{
+    "AWSEBDockerrunVersion": 2,
+    "containerDefinitions": [
+        {
+            "environment": [
+                {
+                    "name": "POSTGRES_USER",
+                    "value": "hello_flask"
+                },
+                {
+                    "name": "POSTGRES_PASSWORD",
+                    "value": "hello_flask"
+                },
+                {
+                    "name": "POSTGRES_DB",
+                    "value": "hello_flask_dev"
+                }
+            ],
+            "essential": true,
+            "image": "postgres:12-alpine",
+            "memory": 100,
+            "mountPoints": [
+                {
+                    "containerPath": "/var/lib/postgresql/data/",
+                    "sourceVolume": "postgres_data"
+                }
+            ],
+            "name": "db",
+            "portMappings": [
+                {
+                    "containerPort": 5432,
+                    "hostPort": 5432
+                }
+            ]
+        },
+        {
+            "essential": true,
+            "links": [
+                "db"
+            ],
+            "name": "web",
+            "image": "sharafabacery/cloud-project",
+            "memory": 100,
+            "portMappings": [
+                {
+                    "containerPort": 80,
+                    "hostPort": 80
+                }
+            ]
+        }
+    ],
+    "volumes": [
+        {
+            "host": {
+                "sourcePath": "postgres_data"
+            },
+            "name": "postgres_data"
+        }
+    ]
+}
