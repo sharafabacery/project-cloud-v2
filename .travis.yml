@@ -3,10 +3,9 @@ services:
     - docker
     
 after_succes:
-    - docker login -u "$DOCKER_ID" -p "$DOCKER_PASSWORD" --password-stdin 
     - docker build -t sharafabacery/cloud-project .
 
-    - echo "$DOCKER_PASSWORD | docker login -u $DOCKER_ID" --password-stdin
+    - echo "$DOCKER_PASSWORD | docker login -u =$DOCKER_ID" --password-stdin
 
     - docker push sharafabacery/cloud-project 
 
@@ -17,6 +16,7 @@ deploy:
    env: Cloudproject-env
    access_key_id: $AWS_ACCESS_KEY
    secret_access_key: $AWS_SECRET_KEY
+   edge: true
    bucket_name: "myawabucketm"
    bucket_path: "docker"
    on:
