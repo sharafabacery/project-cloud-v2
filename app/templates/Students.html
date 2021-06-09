@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <table >
+        <tr><th>document</th><td>similarity</td> <td>links</td></tr>
+        {% for dict_item in Students %}
+        {% for key, value in dict_item.items() %}
+           <h1>Key: {{key}}</h1>
+           <h2>Value: {{value}}</h2>
+           {% if key=='linkImage' %}
+            <img src="{{value}}" alt="">
+{% endif %}
+        {% endfor %}
+     {% endfor %}
+    </table> 
+</body>
+</html>
