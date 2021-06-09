@@ -5,8 +5,8 @@ services:
 after_succes:
     - docker build -t sharafabacery/cloud-project .
 
-    - echo "$DOCKER_PASSWORD | docker login -u =$DOCKER_ID" --password-stdin
-
+    - echo "$DOCKER_PASSWORD "| docker login -u ="$DOCKER_ID" --password-stdin
+    - docker tag firstimage sharafabacery/cloud-project
     - docker push sharafabacery/cloud-project 
 
 deploy:
