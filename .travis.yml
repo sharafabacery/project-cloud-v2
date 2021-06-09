@@ -16,7 +16,8 @@ deploy:
    env: Cloudproject-env
    access_key_id: $AWS_ACCESS_KEY
    secret_access_key: $AWS_SECRET_KEY
-   bucket_name: multi-container-cloud-app
+   edge: true
+   bucket_name: "multi-container-cloud-app"
    bucket_path: "docker"
    on:
      branch: main
