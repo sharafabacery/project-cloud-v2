@@ -1,0 +1,22 @@
+language: generic
+services:
+    - docker
+    
+after_sucess:
+    - docker build -t sharafabacery/cloud-project .
+
+    - echo "$DOCKER_PASSWORD | docker login -u $DOCKER_ID" --password-stdin
+
+    - docker push sharafabacery/cloud-project .
+
+deploy:
+   provider: elasticbeanstalk
+   region: ap-south-1
+   app: cloud-project
+   env: Cloudproject-env
+   access_key_id: $AWS_ACCESS_KEY
+   secret_access_key: $AWS_SECRET_KEY
+   bucket_name: "multi-container-cloud-app"
+   bucket_path: "docker"
+   on:
+     branch: multi-cont-app
