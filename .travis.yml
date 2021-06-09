@@ -7,7 +7,7 @@ after_sucess:
 
     - echo "$DOCKER_PASSWORD | docker login -u $DOCKER_ID" --password-stdin
 
-    - docker push sharafabacery/cloud-project .
+    - docker push sharafabacery/cloud-project 
 
 deploy:
    provider: elasticbeanstalk
