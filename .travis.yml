@@ -2,7 +2,7 @@ language: generic
 services:
     - docker
     
-after_sucess:
+after_success:
     - docker build -t sharafabacery/cloud-project .
 
     - echo "$DOCKER_PASSWORD | docker login -u $DOCKER_ID" --password-stdin
